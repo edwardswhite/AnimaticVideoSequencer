@@ -24,7 +24,7 @@ bl_info = {
     "author": "Edward S. White",
     "description": "Imports an image sequence as an animatic",
     "blender": (2, 80, 0),
-    "version": (0, 8, 7),
+    "version": (0, 8, 8),
     "location": "Sequencer > Add > Images as Animatic",
     "doc_url": "https://github.com/edwardswhite/AnimaticVideoSequencer/wiki",
     "tracker_url": "https://github.com/edwardswhite/AnimaticVideoSequencer/issues",
@@ -233,7 +233,10 @@ class SB_OT_animatic_strip_add(Operator):
                                 print(fps_msg, res_y)
                     readfile.close()
                     self.im_list.pop(im_index)
-                elif fext.upper() not in self.img_ext:
+                elif fe not in self.img_ext:
+                    self.im_list.pop(im_index)
+                elif fe in self.img_ext and not fn[self.zpad:].isnumeric():
+                    print("Skipping image:", fn)
                     self.im_list.pop(im_index)
 
             self.total_frames = len(self.im_list)
@@ -331,6 +334,6 @@ def register():
 
 
 def unregister():
+    bpy.types.SEQUENCER_MT_add.remove(menu_func_animatic)
     for cls in classes:
         bpy.utils.unregister_class(cls)
-    bpy.types.SEQUENCER_MT_add.remove(menu_func_animatic)

@@ -9,6 +9,9 @@ Blender add-on for the Video Sequence Editor to import an image sequence as an a
 ## Requirements
 * Blender 2.8 or higher
 
+## Donations
+This add-on is free to use. If you find it useful, make a purchase of any amount on [Gumroad](https://gum.co/wrIGs).
+
 ## Installation
 In Blender's Edit menu, select "Preferences..." and then choose the Add-ons tab. Press the "Install..." button and select this zip file. Select the checkbox next to the Animatic Video Sequencer. 
 
